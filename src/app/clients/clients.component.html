@@ -1,0 +1,7 @@
+<h2>All Clients</h2>
+<ul>
+  <li *ngFor="let client of clientService.allClients()">
+    {{client.name}}
+  </li>
+</ul>
+<app-new-client></app-new-client>

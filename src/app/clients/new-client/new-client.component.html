@@ -1,0 +1,10 @@
+<div>
+  <label for="new-client">Client name: </label>
+  <input id="new-client" #clientName />
+
+  <button type="button"
+    class="add-button"
+    (click)="add(clientName.value); clientName.value=''">
+    Add client
+  </button>
+</div>
