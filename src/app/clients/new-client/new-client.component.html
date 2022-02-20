@@ -1,10 +1,69 @@
-<div>
-  <label for="new-client">Client name: </label>
-  <input id="new-client" #clientName />
+<form [formGroup]="addClientForm" (ngSubmit)="onSubmit()">
 
-  <button type="button"
-    class="add-button"
-    (click)="add(clientName.value); clientName.value=''">
-    Add client
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name">
+    <div *ngIf="addClientForm.controls['name'].invalid &&
+                (addClientForm.controls['name'].dirty ||
+                 addClientForm.controls['name'].touched)">
+      <div *ngIf="addClientForm.controls['name'].errors?.['required']">
+        Name is required.<br>
+      </div>
+      <div *ngIf="addClientForm.controls['name'].errors?.['minlength']">
+        This field must contains min 5 chars
+      </div>
+      <div *ngIf="addClientForm.controls['name'].errors?.['maxlength']">
+        This field can contains max 45 chars
+      </div>
+    </div>
+  <label for="city">City: </label>
+  <input id="city" type="text" formControlName="city">
+      <div *ngIf="addClientForm.controls['city'].invalid &&
+                      (addClientForm.controls['city'].dirty ||
+                       addClientForm.controls['city'].touched)">
+        <div *ngIf="addClientForm.controls['city'].errors?.['required']">
+          City is required.<br>
+        </div>
+        <div *ngIf="addClientForm.controls['city'].errors?.['minlength']">
+          This field must contains min 4 chars
+        </div>
+        <div *ngIf="addClientForm.controls['city'].errors?.['maxlength']">
+          This field can contains max 40 chars
+        </div>
+
+      </div>
+  <label for="streetNumber">Street number: </label>
+  <input id="streetNumber" type="text" formControlName="streetNumber">
+    <div *ngIf="addClientForm.controls['streetNumber'].invalid &&
+                            (addClientForm.controls['streetNumber'].dirty ||
+                              addClientForm.controls['streetNumber'].touched)">
+      <div *ngIf="addClientForm.controls['streetNumber'].errors?.['required']">
+        Street number-
+         is required
+      </div>
+      <div *ngIf="addClientForm.controls['streetNumber'].errors?.['maxlength']">
+        This field can contains max 4 chars
+      </div>
+    </div>
+  <label for="flatNumber">Flat number: </label>
+  <input id="flatNumber" type="text" formControlName="flatNumber">
+    <div *ngIf="addClientForm.controls['flatNumber'].invalid &&
+                          (addClientForm.controls['flatNumber'].dirty ||
+                          addClientForm.controls['flatNumber'].touched)">
+      <div *ngIf="addClientForm.controls['flatNumber'].errors?.['maxlength']">
+        This field can contains max 4 chars
+      </div>
+    </div>
+  <label for="phoneNumber">Phone number: </label>
+  <input id="phoneNumber" type="text" formControlName="phoneNumber">
+      <div *ngIf="addClientForm.controls['phoneNumber'].invalid &&
+                      (addClientForm.controls['phoneNumber'].dirty ||
+                       addClientForm.controls['phoneNumber'].touched)">
+        <div *ngIf="addClientForm.controls['phoneNumber'].errors?.['pattern']">
+          This is not correct phone number.
+        </div>
+      </div>
+  <button type="submit"
+    [disabled]="addClientForm.pristine || addClientForm.invalid">
+    Submit
   </button>
-</div>
+</form>

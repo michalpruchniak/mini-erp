@@ -44,7 +44,7 @@ export class ClientService{
   addClient(client: Client): Observable<Client> {
     return this.http.post<Client>(this.clientsURL, client, this.httpOptions).pipe(
       tap((newClient: Client) => console.log(newClient)),
-      catchError(this.handleError<Client>('addedHero'))
+      catchError(this.handleError<Client>('addedClient'))
     );
 
   }
