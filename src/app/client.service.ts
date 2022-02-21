@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -10,6 +10,10 @@ import { Client } from './client';
   providedIn: 'root'
 })
 export class ClientService{
+
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   private clients: Client[] = [];
   private clientsURL = 'api/clients';
@@ -23,10 +27,6 @@ export class ClientService{
       return of(result as T);
     }
   }
-
-  constructor(
-    private http: HttpClient,
-  ) { }
 
   fetchClients(): Observable<Client[]> {
     return this.http.get<Client[]>(this.clientsURL)
@@ -51,5 +51,13 @@ export class ClientService{
 
   add(client: Client){
     this.clients.push(client);
+  }
+
+    getClient(id: number): Observable<Client> {
+    const url = `${this.clientsURL}/${id}}`;
+    return this.http.get<Client>(url)
+      .pipe(
+        catchError(this.handleError<Client>(`getHero id=${id}}`)
+      ));
   }
 }

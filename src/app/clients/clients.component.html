@@ -1,7 +1,9 @@
 <h2>All Clients</h2>
 <ul>
   <li *ngFor="let client of clientService.allClients()">
+  <a routerLink="/clients/details/{{client.id}}">
     {{client.name}} ({{ client.city }})
+  </a>
   </li>
 </ul>
 <app-new-client></app-new-client>
