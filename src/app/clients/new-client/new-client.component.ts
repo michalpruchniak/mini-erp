@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ClientService } from 'src/app/client.service';
 import { Client } from 'src/app/client';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-client',

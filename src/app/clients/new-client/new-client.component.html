@@ -37,8 +37,7 @@
                             (addClientForm.controls['streetNumber'].dirty ||
                               addClientForm.controls['streetNumber'].touched)">
       <div *ngIf="addClientForm.controls['streetNumber'].errors?.['required']">
-        Street number-
-         is required
+        Street number is required
       </div>
       <div *ngIf="addClientForm.controls['streetNumber'].errors?.['maxlength']">
         This field can contains max 4 chars
@@ -59,7 +58,7 @@
                       (addClientForm.controls['phoneNumber'].dirty ||
                        addClientForm.controls['phoneNumber'].touched)">
         <div *ngIf="addClientForm.controls['phoneNumber'].errors?.['pattern']">
-          This is not correct phone number.
+          <app-alert type="error" message="This is not correct phone number."></app-alert>
         </div>
       </div>
   <button type="submit"

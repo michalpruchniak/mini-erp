@@ -9,13 +9,15 @@ import { ClientsComponent } from './clients/clients.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClientsDataService } from './clients-data.service';
 import { NewClientComponent } from './clients/new-client/new-client.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    NewClientComponent
+    NewClientComponent,
+    AlertComponent
   ],
   imports: [
     HttpClientModule,
