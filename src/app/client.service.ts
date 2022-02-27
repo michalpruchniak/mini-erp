@@ -49,15 +49,27 @@ export class ClientService{
 
   }
 
-  add(client: Client){
+  add(client: Client): void{
     this.clients.push(client);
   }
 
-    getClient(id: number): Observable<Client> {
+  getClient(id: number): Observable<Client> {
     const url = `${this.clientsURL}/${id}}`;
     return this.http.get<Client>(url)
       .pipe(
-        catchError(this.handleError<Client>(`getHero id=${id}}`)
+        catchError(this.handleError<Client>(`getClient id=${id}}`)
       ));
+  }
+
+  updateClient(client: Client, id: number): Observable<Client> {
+    return this.http.post<Client>(this.clientsURL, client, this.httpOptions).pipe(
+      tap((newClient: Client) => this.update(newClient, id)),
+      catchError(this.handleError<Client>('addedClient'))
+    );
+
+  }
+
+  update(newClient: Client, id: number){
+    this.clients[id-1] = newClient;
   }
 }

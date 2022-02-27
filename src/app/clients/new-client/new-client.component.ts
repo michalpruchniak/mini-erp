@@ -15,7 +15,6 @@ export class NewClientComponent {
     private fb: FormBuilder
   ) { }
 
-
   addClientForm = this.fb.group({
     name: ['', [Validators.required,
                 Validators.minLength(4),
@@ -34,11 +33,8 @@ export class NewClientComponent {
     flatNumber: ['', [Validators.maxLength(4)]],
     phoneNumber: ['', [Validators.pattern('[+0-9]{9,12}')]]
   });
-  get name() { return this.addClientForm.get('name'); }
 
   onSubmit(){
-    console.warn(this.addClientForm.value);
-
     this.clientService.addClient(this.addClientForm.value as Client)
       .subscribe(client => {
         this.clientService.add(client);
@@ -46,12 +42,12 @@ export class NewClientComponent {
       });
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.clientService.addClient({ name } as Client)
-      .subscribe(client => {
-        this.clientService.add(client);
-      });
-  }
+  // add(name: string): void {
+  //   name = name.trim();
+  //   if (!name) { return; }
+  //   this.clientService.addClient({ name } as Client)
+  //     .subscribe(client => {
+  //       this.clientService.add(client);
+  //     });
+  // }
 }

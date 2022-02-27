@@ -12,6 +12,7 @@ export class ClientsComponent {
   constructor(
     public clientService: ClientService
   ) { }
+
   add(name: string): void {
     name = name.trim();
     if(!name) { return; }
