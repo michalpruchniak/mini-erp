@@ -1,6 +1,6 @@
-<div *ngIf="client">
+<div *ngIf="updateClientForm">
+  <h2> {{ updateClientForm.controls['name'].value }}</h2>
   <button  (click)="goBack()">Go back</button>
-  {{ updateClientForm.controls['name'].value }}
 <form [formGroup]="updateClientForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name: </label>

@@ -12,8 +12,6 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./client-details.component.css']
 })
 export class ClientDetailsComponent implements OnInit {
-    @Input() client?: Client;
-
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -24,27 +22,27 @@ export class ClientDetailsComponent implements OnInit {
   private id = Number(this.route.snapshot.paramMap.get('id'));
 
 updateClientForm = this.fb.group({
-    name: [this.client?.name, [Validators.required,
+    name: ['', [Validators.required,
                 Validators.minLength(4),
                 Validators.maxLength(45)
                ]
           ],
-    city: [this.client?.city, [Validators.required,
+    city: ['', [Validators.required,
                 Validators.minLength(4),
                 Validators.maxLength(40)
                ]
           ],
-    streetNumber: [this.client?.streetNumber, [Validators.required,
+    streetNumber: ['', [Validators.required,
                         Validators.maxLength(4)
                   ]
               ],
-    flatNumber: [this.client?.flatNumber, [Validators.maxLength(4)]],
-    phoneNumber: [this.client?.phoneNumber, [Validators.pattern('[+0-9]{9,12}')]]
+    flatNumber: ['', [Validators.maxLength(4)]],
+    phoneNumber: ['', [Validators.pattern('[+0-9]{9,12}')]]
   });
 
   getClient(): void {
     this.clientService.getClient(this.id)
-        .subscribe(client => this.client = client);
+        .subscribe(client => this.updateClientForm.patchValue(client));
   }
 
   onSubmit(): void {
