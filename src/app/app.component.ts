@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ClientService } from './client.service';
+import { ClientService } from './clients/client.service';
+import { OrderService } from './orders/order.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import { ClientService } from './client.service';
 export class AppComponent implements OnInit {
   title = 'my-app';
   constructor(
-    private clientService: ClientService
+    private clientService: ClientService,
+    private orderService: OrderService
   ) { }
   ngOnInit(){
     this.clientService.getClients();
+    this.orderService.getOrders();
   }
 }

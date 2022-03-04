@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ClientService } from 'src/app/client.service';
-import { Client } from 'src/app/client';
+import { ClientService } from 'src/app/clients/client.service';
+import { Client } from 'src/app/clients/client';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({

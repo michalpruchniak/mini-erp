@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Client } from './client';
+import { Client } from './clients/client';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientsDataService implements InMemoryDbService{
+export class ErpDataService implements InMemoryDbService{
 
   createDb(){
     const clients = [
@@ -31,7 +31,16 @@ export class ClientsDataService implements InMemoryDbService{
         flatNumber: 12
       },
     ];
-    return { clients };
+
+    const orders = [
+      {
+        id: 1,
+        client_id: 1,
+        address: 'Lublin 4/12',
+        salesChannel: 'shop online'
+      }
+    ];
+    return { clients, orders };
   }
 
   genId(clients: Client[]): number {

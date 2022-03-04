@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClientService } from 'src/app/client.service';
-import { Client } from 'src/app/client';
+import { ClientService } from 'src/app/clients/client.service';
 import { Location } from '@angular/common'
 import { FormBuilder, Validators } from '@angular/forms';
 

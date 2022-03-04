@@ -66,7 +66,6 @@ export class ClientService{
       tap((newClient: Client) => this.update(newClient, id)),
       catchError(this.handleError<Client>('addedClient'))
     );
-
   }
 
   update(newClient: Client, id: number){

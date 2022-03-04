@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ErpDataService } from './erp-data.service';
+import { OrderService } from './order.service';
 
-describe('ErpDataService', () => {
-  let service: ErpDataService;
+describe('OrderService', () => {
+  let service: OrderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ErpDataService);
+    service = TestBed.inject(OrderService);
   });
 
   it('should be created', () => {

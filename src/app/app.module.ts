@@ -7,10 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ClientsDataService } from './clients-data.service';
+import { ErpDataService } from './erp-data.service';
 import { NewClientComponent } from './clients/new-client/new-client.component';
 import { AlertComponent } from './alert/alert.component';
 import { ClientDetailsComponent } from './clients/client-details/client-details.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ClientDetailsComponent } from './clients/client-details/client-details.
     ClientsComponent,
     NewClientComponent,
     AlertComponent,
-    ClientDetailsComponent
+    ClientDetailsComponent,
+    OrdersComponent
   ],
   imports: [
     HttpClientModule,
@@ -29,7 +31,7 @@ import { ClientDetailsComponent } from './clients/client-details/client-details.
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      ClientsDataService, { dataEncapsulation: false }
+      ErpDataService, { dataEncapsulation: false }
     )
 
   ],
