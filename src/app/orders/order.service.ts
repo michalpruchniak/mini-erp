@@ -38,4 +38,17 @@ export class OrderService {
   allOrders(): Order[]{
     return this.orders;
   }
+
+  addOrder(order: Order): Observable<Order> {
+    return this.http.post<Order>(this.ordersURL, order).pipe(
+      tap((newOrder: Order) => this.add(newOrder)),
+      catchError(this.handleError<Order>('addedOrder'))
+    );
+
+  }
+
+  add(order: Order): void{
+    console.log('test');
+    this.orders.push(order);
+  }
 }

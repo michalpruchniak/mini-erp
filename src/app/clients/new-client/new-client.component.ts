@@ -41,13 +41,4 @@ export class NewClientComponent {
         this.addClientForm.reset();
       });
   }
-
-  // add(name: string): void {
-  //   name = name.trim();
-  //   if (!name) { return; }
-  //   this.clientService.addClient({ name } as Client)
-  //     .subscribe(client => {
-  //       this.clientService.add(client);
-  //     });
-  // }
 }
