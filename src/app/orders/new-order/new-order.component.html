@@ -14,7 +14,18 @@
       {{client.name}}
       </option>
     </select>
+        <div *ngIf="addOrderForm.controls['client_id'].invalid &&
+                        (addOrderForm.controls['client_id'].dirty ||
+                         addOrderForm.controls['client_id'].touched)">
+          <app-alert
+            *ngIf="addOrderForm.controls['client_id'].errors?.['required']"
+            type="error"
+            message="This filed is required"
+          >
+          </app-alert>
+        </div>
   </div>
+
   <div class="form-group">
     <label for="courier">Courier</label>
     <select
@@ -27,6 +38,13 @@
       <option value="inpost">Inpost</option>
       <option value="dpd">DPD</option>
     </select>
+      <div *ngIf="addOrderForm.controls['courier'].invalid &&
+                              (addOrderForm.controls['courier'].dirty ||
+                                addOrderForm.controls['courier'].touched)">
+        <app-alert *ngIf="addOrderForm.controls['courier'].errors?.['required']" type="error"
+          message="This filed is required">
+        </app-alert>
+      </div>
   </div>
   <div class="form-group">
     <label for="address">Address</label>
@@ -37,6 +55,16 @@
       class="form-control"
       formControlName="address"
     >
+      <div *ngIf="addOrderForm.controls['address'].invalid &&
+                              (addOrderForm.controls['address'].dirty ||
+                                addOrderForm.controls['address'].touched)">
+        <app-alert *ngIf="addOrderForm.controls['address'].errors?.['required']" type="error"
+          message="This filed is required">
+        </app-alert>
+        <app-alert *ngIf="addOrderForm.controls['address'].errors?.['minlength']" type="error"
+          message="This filed must contain min 6 chars">
+        </app-alert>
+      </div>
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
@@ -47,6 +75,16 @@
       class="form-control"
       formControlName="phone"
     >
+    <div *ngIf="addOrderForm.controls['phone'].invalid &&
+                            (addOrderForm.controls['phone'].dirty ||
+                              addOrderForm.controls['phone'].touched)">
+      <app-alert *ngIf="addOrderForm.controls['phone'].errors?.['required']" type="error"
+        message="This filed is required">
+      </app-alert>
+      <app-alert *ngIf="addOrderForm.controls['phone'].errors?.['pattern']" type="error"
+        message="This is not correct phone number">
+      </app-alert>
+    </div>
   </div>
   <div class="form-group">
     <label for="salesChannel">Sales Channel</label>
@@ -59,6 +97,13 @@
       <option value="shopOnline">Shop online</option>
       <option value="facebok">Facebook</option>
     </select>
+    <div *ngIf="addOrderForm.controls['salesChannel'].invalid &&
+                            (addOrderForm.controls['salesChannel'].dirty ||
+                              addOrderForm.controls['salesChannel'].touched)">
+      <app-alert *ngIf="addOrderForm.controls['salesChannel'].errors?.['required']" type="error"
+        message="This filed is required">
+      </app-alert>
+    </div>
   </div>
   <button type="submit"
     [disabled]="addOrderForm.pristine || addOrderForm.invalid">
