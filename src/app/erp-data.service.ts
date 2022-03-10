@@ -12,23 +12,24 @@ export class ErpDataService implements InMemoryDbService{
       {
         id: 1,
         name: 'Jan Kowalski',
-        city: 'Lublin',
+        city: 'Warszawa',
         streetNumber: 4,
-        flatNumber: 12
+        flatNumber: 10,
+        phoneNumber: 555455545
       },
       {
         id: 2,
         name: 'Jan Nowak',
         city: 'Lublin',
         streetNumber: 4,
-        flatNumber: 12
+        flatNumber: 2
       },
       {
         id: 3,
         name: 'Marian Stefański',
-        city: 'Lublin',
-        streetNumber: 4,
-        flatNumber: 12
+        city: 'Zamość',
+        streetNumber: 1,
+        flatNumber: 1
       },
     ];
 

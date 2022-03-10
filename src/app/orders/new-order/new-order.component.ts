@@ -36,4 +36,18 @@ export class NewOrderComponent {
         this.addOrderForm.reset();
       })
   }
+
+  onClientChange(c: any){
+    this.clientService.getClient(c.target.value)
+      .subscribe(client => {
+        const number = !client.flatNumber ?
+                        client.streetNumber :
+                        client.streetNumber + '\\' + client.flatNumber;
+        this.addOrderForm.controls['address']
+          .setValue(`${client.city} ${number}`);
+
+          this.addOrderForm.controls['phone']
+          .setValue(client.phoneNumber !== undefined ? `${client.phoneNumber}`: '');
+      })
+  }
 }

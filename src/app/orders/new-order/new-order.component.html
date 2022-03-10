@@ -6,6 +6,7 @@
       id="client"
       class="form-control"
       formControlName="client_id"
+      (change) = "onClientChange($event)"
     >
       <option
         *ngFor="let client of clientService.allClients()"
