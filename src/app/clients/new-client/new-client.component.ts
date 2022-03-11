@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ClientService } from 'src/app/clients/client.service';
 import { Client } from 'src/app/clients/client';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-client',
@@ -12,7 +13,8 @@ export class NewClientComponent {
 
   constructor(
     private clientService: ClientService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) { }
 
   addClientForm = this.fb.group({
@@ -40,5 +42,9 @@ export class NewClientComponent {
         this.clientService.add(client);
         this.addClientForm.reset();
       });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

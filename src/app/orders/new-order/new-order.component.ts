@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ClientService } from 'src/app/clients/client.service';
 import { OrderService } from '../order.service';
 import { Order } from '../order';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-order',
@@ -14,7 +15,8 @@ export class NewOrderComponent {
   constructor(
     public clientService: ClientService,
     private orderService: OrderService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) { }
 
   addOrderForm = this.fb.group({
@@ -49,5 +51,8 @@ export class NewOrderComponent {
           this.addOrderForm.controls['phone']
           .setValue(client.phoneNumber !== undefined ? `${client.phoneNumber}`: '');
       })
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

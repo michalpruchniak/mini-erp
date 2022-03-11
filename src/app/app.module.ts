@@ -13,6 +13,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ClientDetailsComponent } from './clients/client-details/client-details.component';
 import { OrdersComponent } from './orders/orders.component';
 import { NewOrderComponent } from './orders/new-order/new-order.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NewOrderComponent } from './orders/new-order/new-order.component';
     ClientDetailsComponent,
     OrdersComponent,
     NewOrderComponent,
+    NavigationComponent,
   ],
   imports: [
     HttpClientModule,

@@ -36,6 +36,7 @@ export class ErpDataService implements InMemoryDbService{
     const orders = [
       {
         id: 1,
+        courier: 'DPD',
         client_id: 1,
         address: 'Lublin 4/12',
         salesChannel: 'shop online'

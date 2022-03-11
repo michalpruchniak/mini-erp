@@ -1,3 +1,8 @@
+<div class="row">
+  <div class="col-12">
+    <button class="btn btn-light" (click)="goBack()">Go back</button>
+  </div>
+</div>
 <form [formGroup]="addClientForm" (ngSubmit)="onSubmit()">
 <div class="form-group">
   <label for="name">Name: </label>
@@ -105,7 +110,7 @@
 
       </div>
 </div>
-  <button type="submit"
+  <button type="submit" class="btn btn-primary"
     [disabled]="addClientForm.pristine || addClientForm.invalid">
     Submit
   </button>

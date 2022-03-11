@@ -1,9 +1,23 @@
-<h2>All Clients</h2>
-<ul>
-  <li *ngFor="let client of clientService.allClients()">
-  <a routerLink="/clients/details/{{client.id}}">
-    {{client.name}} ({{ client.city }})
-  </a>
-  </li>
-</ul>
-<app-new-client></app-new-client>
+<button class="btn btn-primary" routerLink="/clients/new">Add new client</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Street Number</th>
+      <th scope="col">Flat Number</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clientService.allClients()">
+      <th scope="row">{{client.id}}</th>
+      <td><a routerLink="/clients/details/{{client.id}}">{{client.name}}</a></td>
+      <td>{{client.city}}</td>
+      <td>{{client.streetNumber}}</td>
+      <td>{{client.flatNumber}}</td>
+      <td>{{client.phoneNumber}}</td>
+    </tr>
+  </tbody>
+</table>
