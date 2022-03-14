@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Order } from './order';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Client } from '../clients/client';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +58,17 @@ export class OrderService {
       .pipe(
         catchError(this.handleError<Order>(`getOrder id=${id}}`)
       ));
+  }
+
+  updateOrder(order: Order): Observable<any> {
+    console.log(order);
+    return this.http.put(this.ordersURL, order).pipe(
+      tap(_ => {console.log(`updated order id=${order.id}`); this.update(order, order.id)}),
+      catchError(this.handleError<any>('updateOrder'))
+    );
+  }
+
+  update(newOrder: Order, id: number){
+    this.orders[id-1] = newOrder;
   }
 }

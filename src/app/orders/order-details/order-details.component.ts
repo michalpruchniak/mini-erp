@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../order.service';
-import { Location } from '@angular/common'
 import { ClientService } from 'src/app/clients/client.service';
 
 @Component({
@@ -10,56 +8,20 @@ import { ClientService } from 'src/app/clients/client.service';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css']
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderDetailsComponent {
+  orderID = Number(this.route.snapshot.paramMap.get('id'));
 
   constructor(
     public clientService: ClientService,
-    private fb: FormBuilder,
     private orderService: OrderService,
     private route: ActivatedRoute,
-    private location: Location
   ) { }
 
-  private id = Number(this.route.snapshot.paramMap.get('id'));
-
-  updateOrderForm = this.fb.group({
-    client_id: ['', [Validators.required]],
-    courier: ['', [Validators.required]],
-    address: ['', [Validators.required,
-                   Validators.minLength(6)
-                  ]],
-    phone: ['', [Validators.required,
-                 Validators.pattern('[+0-9]{9,12}')
-                ]
-           ],
-    salesChannel: ['', [Validators.required]],
-  });
-
-  getorder(): void {
-    this.orderService.getOrder(this.id)
-      .subscribe(order => this.updateOrderForm.patchValue(order));
-  }
-
-  onClientChange(c: any){
-    this.clientService.getClient(c.target.value)
-      .subscribe(client => {
-        const number = !client.flatNumber ?
-                        client.streetNumber :
-                        client.streetNumber + '\\' + client.flatNumber;
-        this.updateOrderForm.controls['address']
-          .setValue(`${client.city} ${number}`);
-
-          this.updateOrderForm.controls['phone']
-          .setValue(client.phoneNumber !== undefined ? `${client.phoneNumber}`: '');
+  updateOrder(order: any){
+    this.orderService.updateOrder(order)
+      .subscribe(() => {
+        this.orderService.update(order, this.orderID);
       })
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  ngOnInit(): void {
-    this.getorder();
   }
 
 }
