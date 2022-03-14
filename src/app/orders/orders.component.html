@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let order of orderService.allOrders()">
-      <th scope="row">{{order.id}}</th>
+      <th scope="row"><a routerLink="/orders/details/{{order.id}}">{{order.id}}</a></th>
       <td>{{order.courier}}</td>
       <td>{{order.address}}</td>
       <td>{{order.phone}}</td>
