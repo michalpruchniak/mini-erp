@@ -10,52 +10,18 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './client-details.component.html',
   styleUrls: ['./client-details.component.css']
 })
-export class ClientDetailsComponent implements OnInit {
+export class ClientDetailsComponent {
+  clientID = Number(this.route.snapshot.paramMap.get('id'));
+
   constructor(
-    private fb: FormBuilder,
+    public clientService: ClientService,
     private route: ActivatedRoute,
-    private clientService: ClientService,
-    private location: Location
   ) { }
 
-  private id = Number(this.route.snapshot.paramMap.get('id'));
-
-updateClientForm = this.fb.group({
-    name: ['', [Validators.required,
-                Validators.minLength(4),
-                Validators.maxLength(45)
-               ]
-          ],
-    city: ['', [Validators.required,
-                Validators.minLength(4),
-                Validators.maxLength(40)
-               ]
-          ],
-    streetNumber: ['', [Validators.required,
-                        Validators.maxLength(4)
-                  ]
-              ],
-    flatNumber: ['', [Validators.maxLength(4)]],
-    phoneNumber: ['', [Validators.pattern('[+0-9]{9,12}')]]
-  });
-
-  getClient(): void {
-    this.clientService.getClient(this.id)
-        .subscribe(client => this.updateClientForm.patchValue(client));
-  }
-
-  onSubmit(): void {
-    if(this.updateClientForm.value){
-      this.clientService.updateClient(this.updateClientForm.value, this.id)
-        .subscribe(() => this.goBack());
-    }
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  ngOnInit(): void {
-    this.getClient();
+  updateClient(client: any){
+    this.clientService.updateClient(client)
+      .subscribe(() => {
+        this.clientService.update(client, this.clientID);
+      })
   }
 }

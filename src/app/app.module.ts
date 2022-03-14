@@ -16,6 +16,7 @@ import { NewOrderComponent } from './orders/new-order/new-order.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
 import { FormsOrderComponent } from './forms/forms-order/forms-order.component';
+import { FormsClientComponent } from './forms/forms-client/forms-client.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FormsOrderComponent } from './forms/forms-order/forms-order.component';
     NavigationComponent,
     OrderDetailsComponent,
     FormsOrderComponent,
+    FormsClientComponent,
   ],
   imports: [
     HttpClientModule,

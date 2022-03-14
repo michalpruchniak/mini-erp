@@ -61,9 +61,10 @@ export class OrderService {
   }
 
   updateOrder(order: Order): Observable<any> {
-    console.log(order);
     return this.http.put(this.ordersURL, order).pipe(
-      tap(_ => {console.log(`updated order id=${order.id}`); this.update(order, order.id)}),
+      tap(_ => {console.log(`updated order id=${order.id}`);
+                this.update(order, order.id)
+               }),
       catchError(this.handleError<any>('updateOrder'))
     );
   }

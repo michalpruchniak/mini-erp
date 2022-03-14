@@ -43,7 +43,7 @@ export class ClientService{
 
   addClient(client: Client): Observable<Client> {
     return this.http.post<Client>(this.clientsURL, client, this.httpOptions).pipe(
-      tap((newClient: Client) => console.log(newClient)),
+      tap((newClient: Client) => this.add(newClient)),
       catchError(this.handleError<Client>('addedClient'))
     );
 
@@ -61,14 +61,17 @@ export class ClientService{
       ));
   }
 
-  updateClient(client: Client, id: number): Observable<Client> {
-    return this.http.post<Client>(this.clientsURL, client, this.httpOptions).pipe(
-      tap((newClient: Client) => this.update(newClient, id)),
-      catchError(this.handleError<Client>('addedClient'))
+  updateClient(client: Client): Observable<any> {
+    return this.http.put(this.clientsURL, client).pipe(
+      tap(_ => {console.log(`updated client id=${client.id}`);
+                this.update(client, client.id)
+                }),
+      catchError(this.handleError<any>('updateClient'))
     );
   }
 
   update(newClient: Client, id: number){
+    console.log(newClient);
     this.clients[id-1] = newClient;
   }
 }
