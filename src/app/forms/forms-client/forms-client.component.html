@@ -1,6 +1,6 @@
 <div *ngIf="clientForm">
   <h2> {{ clientForm.controls['name'].value }}</h2>
-  <button (click)="goBack()">Go back</button>
+  <button  class="btn btn-light" (click)="goBack()">Go back</button>
   <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name: </label>
@@ -87,7 +87,7 @@
 
       </div>
     </div>
-    <button type="submit" [disabled]="clientForm.pristine || clientForm.invalid">
+    <button type="submit" class="btn btn-primary" [disabled]="clientForm.pristine || clientForm.invalid">
       Submit
     </button>
   </form>
