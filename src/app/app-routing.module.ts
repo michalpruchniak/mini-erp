@@ -6,6 +6,7 @@ import { NewClientComponent } from './clients/new-client/new-client.component';
 import { OrdersComponent } from './orders/orders.component';
 import { NewOrderComponent } from './orders/new-order/new-order.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   { path: 'clients', component: ClientsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'orders/new', component: NewOrderComponent },
   { path: 'orders/details/:id', component: OrderDetailsComponent },
+  { path: 'products', component: ProductsComponent },
 
 ];
 
