@@ -70,6 +70,7 @@ export class OrderService {
   }
 
   update(newOrder: Order, id: number){
+    newOrder.id = id;
     this.orders[id-1] = newOrder;
   }
 }

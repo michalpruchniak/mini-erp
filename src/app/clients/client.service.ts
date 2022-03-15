@@ -71,7 +71,7 @@ export class ClientService{
   }
 
   update(newClient: Client, id: number){
-    console.log(newClient);
+    newClient.id = id;
     this.clients[id-1] = newClient;
   }
 }
