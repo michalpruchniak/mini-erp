@@ -1,0 +1,61 @@
+<div *ngIf="productForm">
+  <h2> {{ productForm.controls['name'].value }}</h2>
+  <button class="btn btn-light" (click)="goBack()">Go back</button>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name: </label>
+      <input id="name" type="text" class="form-control" formControlName="name">
+      <div *ngIf="productForm.controls['name'].invalid &&
+                (productForm.controls['name'].dirty ||
+                 productForm.controls['name'].touched)">
+
+        <app-alert *ngIf="productForm.controls['name'].errors?.['required']" type="error" message="Name is required">
+        </app-alert>
+
+        <app-alert *ngIf="productForm.controls['name'].errors?.['minlength']" type="error"
+          message="This field must contains min 4 chars">
+        </app-alert>
+
+        <app-alert *ngIf="productForm.controls['name'].errors?.['maxlength']" type="error"
+          message="This field can contains max 45 chars">
+        </app-alert>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">Price: </label>
+      <input id="price" type="number" class="form-control" formControlName="price">
+      <div *ngIf="productForm.controls['price'].invalid &&
+                      (productForm.controls['price'].dirty ||
+                       productForm.controls['price'].touched)">
+      <div>{{productForm.controls['price'].errors}}</div>
+
+        <app-alert *ngIf="productForm.controls['price'].errors?.['required']" type="error" message="price is required">
+        </app-alert>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">description: </label>
+      <textarea name="description" id="description" class="form-control" formControlName="description"></textarea>
+      <div *ngIf="productForm.controls['description'].invalid &&
+                            (productForm.controls['description'].dirty ||
+                              productForm.controls['description'].touched)">
+
+        <app-alert *ngIf="productForm.controls['description'].errors?.['required']" type="error"
+          message="Description is required">
+        </app-alert>
+        <app-alert *ngIf="productForm.controls['description'].errors?.['minlength']" type="error"
+          message="This field must contains min 10 chars">
+        </app-alert>
+        <app-alert *ngIf="productForm.controls['description'].errors?.['maxlength']" type="error"
+          message="This field can contains max 600 chars">
+        </app-alert>
+
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.pristine || productForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

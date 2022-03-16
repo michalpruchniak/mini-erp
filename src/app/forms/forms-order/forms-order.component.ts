@@ -26,7 +26,7 @@ export class FormsOrderComponent implements OnInit{
 
   orderForm = this.fb.group(ordersForm)
 
-  onSubmit(){
+  onSubmit(): void{
     this.formData.emit(this.orderForm.value);
     this.goBack();
   }

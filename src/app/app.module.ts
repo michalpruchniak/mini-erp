@@ -18,6 +18,8 @@ import { OrderDetailsComponent } from './orders/order-details/order-details.comp
 import { FormsOrderComponent } from './forms/forms-order/forms-order.component';
 import { FormsClientComponent } from './forms/forms-client/forms-client.component';
 import { ProductsComponent } from './products/products.component';
+import { NewProductComponent } from './products/new-product/new-product.component';
+import { FormsProductComponent } from './forms/forms-product/forms-product.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { ProductsComponent } from './products/products.component';
     FormsOrderComponent,
     FormsClientComponent,
     ProductsComponent,
+    NewProductComponent,
+    FormsProductComponent,
   ],
   imports: [
     HttpClientModule,

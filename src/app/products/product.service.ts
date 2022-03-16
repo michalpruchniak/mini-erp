@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,17 @@ export class ProductService {
 
   allProducts(): Product[]{
     return this.products;
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.productsURL, product).pipe(
+      tap((newProduct: Product) => this.add(newProduct)),
+      catchError(this.handleError<Product>('addedProduct'))
+    )
+  }
+
+  add(product: Product): void {
+    this.products.push(product);
   }
 
 }

@@ -48,7 +48,6 @@ export class OrderService {
   }
 
   add(order: Order): void{
-    console.log('test');
     this.orders.push(order);
   }
 
