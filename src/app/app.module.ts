@@ -20,6 +20,7 @@ import { FormsClientComponent } from './forms/forms-client/forms-client.componen
 import { ProductsComponent } from './products/products.component';
 import { NewProductComponent } from './products/new-product/new-product.component';
 import { FormsProductComponent } from './forms/forms-product/forms-product.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FormsProductComponent } from './forms/forms-product/forms-product.compo
     ProductsComponent,
     NewProductComponent,
     FormsProductComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     HttpClientModule,

@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of productService.allProducts()">
-      <th scope="row"><a routerLink="/orders/details/{{product.id}}">{{product.id}}</a></th>
+      <th scope="row"><a routerLink="/products/details/{{product.id}}">{{product.id}}</a></th>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.description}}</td>

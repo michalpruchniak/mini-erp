@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OrderService } from './order.service';
 
 @Component({
@@ -6,13 +6,10 @@ import { OrderService } from './order.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent {
 
   constructor(
     public orderService: OrderService
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }

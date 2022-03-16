@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Product } from './product';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { NewClientComponent } from '../clients/new-client/new-client.component';
+import productsForms from './productsForms';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +53,30 @@ export class ProductService {
 
   add(product: Product): void {
     this.products.push(product);
+  }
+
+  getProduct(id: number): Observable<Product> {
+    const url = `${this.productsURL}/${id}`;
+    return this.http.get<Product>(url)
+      .pipe(
+        catchError(this.handleError<Product>(`getProduct id=${id}}`)
+      ));
+  }
+
+  updateProduct(product: Product): Observable<any> {
+    return this.http.put(this.productsURL, product).pipe(
+      tap(_ => {
+        console.log('updasted product');
+        this.update(product, product.id)
+      }),
+      catchError(this.handleError<any>('updateProduct'))
+
+    )
+  }
+
+  update(newProduct: Product, id: number) {
+    newProduct.id = id;
+    this.products[id-1] = newProduct;
   }
 
 }

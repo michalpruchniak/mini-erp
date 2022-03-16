@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -16,7 +16,6 @@ export class NewProductComponent {
   addProduct(product: any){
       this.productService.addProduct(product as Product)
         .subscribe(() => {
-
           console.log(product)
         })
   }
