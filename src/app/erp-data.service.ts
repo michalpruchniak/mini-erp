@@ -68,8 +68,32 @@ export class ErpDataService implements InMemoryDbService{
         price: 42.30,
         description: 'Nad Suwalszczyzną za kilka dni pojawi się zorza polarna. W Jodoziorach, małej wiosce na prowincji, zostają znalezione spopielałe zwłoki małżeństwa. Wśród lokalnej społeczności miejsce to owiane jest złą sławą, słynie ze szczególnego nasilenia przemocy, chorób, zaginięć i samobójstw. Mówi się też o zjawiskach nadprzyrodzonych – niezidentyfikowanym zielonym świetle, odgłosach niewiadomego pochodzenia, a także o nawiedzonym domu.'
       },
+    ];
+
+    const productsToOrder = [
+      {
+        id: 1,
+        order_id: 1,
+        product_id: 1,
+        amount: 3
+      },
+      {
+        id: 2,
+        order_id: 1,
+        product_id: 2,
+        price: 10
+      },
+      {
+        id: 3,
+        order_id: 2,
+        products_id: 3
+      }
     ]
-    return { clients, orders, products };
+    return { clients,
+             orders,
+             products,
+             productsToOrder
+           };
   }
 
   genId(clients: Client[]): number {

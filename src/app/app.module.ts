@@ -21,6 +21,11 @@ import { ProductsComponent } from './products/products.component';
 import { NewProductComponent } from './products/new-product/new-product.component';
 import { FormsProductComponent } from './forms/forms-product/forms-product.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { AllProductsFromOrderComponent } from './orders/products/all-products-from-order/all-products-from-order.component';
+import { AddNewProductToOrderComponent } from './orders/products/add-new-product-to-order/add-new-product-to-order.component';
+import { FormsAddProductToOrderComponent } from './forms/forms-add-product-to-order/forms-add-product-to-order.component';
+import { ProductsToOrderComponent } from './orders/products-to-order/products-to-order.component';
+import { ProductsListComponent } from './orders/products-to-order/products-list/products-list.component';
 
 
 @NgModule({
@@ -40,6 +45,11 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
     NewProductComponent,
     FormsProductComponent,
     ProductDetailsComponent,
+    AllProductsFromOrderComponent,
+    AddNewProductToOrderComponent,
+    FormsAddProductToOrderComponent,
+    ProductsToOrderComponent,
+    ProductsListComponent,
   ],
   imports: [
     HttpClientModule,

@@ -7,6 +7,7 @@
       <th scope="col">Address</th>
       <th scope="col">Phone</th>
       <th scope="col">Sales channel</th>
+      <th scope="col">-</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,20 @@
       <td>{{order.address}}</td>
       <td>{{order.phone}}</td>
       <td>{{order.salesChannel}}</td>
+      <td>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="przykladowaLista" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Menu
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="products(order.id)">Add Products</a>
+        </div>
+      </div></td>
     </tr>
   </tbody>
 </table>
+<app-products-to-order
+  *ngIf="orderID"
+  orderID={{orderID}}
+></app-products-to-order>

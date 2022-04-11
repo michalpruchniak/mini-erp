@@ -16,7 +16,7 @@ export class NewProductComponent {
   addProduct(product: any){
       this.productService.addProduct(product as Product)
         .subscribe(() => {
-          console.log(product)
+          // console.log(product)
         })
   }
 

@@ -1,0 +1,54 @@
+<form
+  [formGroup]="productForm"
+  (submit)="onSubmit()"
+
+>
+  <div class="row">
+    <div class="col-6">
+      <select
+        class="form-control"
+        formControlName="product"
+        (change)="onProductChange($event)"
+
+      >
+        <option>
+          --Check Product--
+        </option>
+        <option
+          value={{product.id}}
+          *ngFor="let product of productService.allProducts()"
+        >
+        {{product.name}}
+        </option>
+      </select>
+    </div>
+    <div class="col-2">
+      <input
+        type="number"
+        class="form-control"
+        name="amount"
+        formControlName="amount"
+        placeholder="Amount"
+        (change)="onAmountChange($event)"
+
+      >
+    </div>
+    <div class="col-2">
+      <input
+        type="number"
+        class="form-control"
+        name="Price"
+        formControlName="price"
+        placeholder="Price"
+      >
+    </div>
+    <div class="col-2">
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+      Add
+      </button>
+    </div>
+  </div>
+</form>

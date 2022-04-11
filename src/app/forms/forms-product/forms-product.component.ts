@@ -22,7 +22,7 @@ export class FormsProductComponent implements OnInit {
     private location: Location
   ) { }
 
-  onSubmit():void{
+  onSubmit(): void{
     this.formData.emit(this.productForm.value)
     this.goBack();
   }
