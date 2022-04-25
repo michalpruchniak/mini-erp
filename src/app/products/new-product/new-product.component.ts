@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../Product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class NewProductComponent {
     private productService: ProductService
   ) { }
 
-  addProduct(product: any){
+  addProduct(product: Product): void{
       this.productService.addProduct(product as Product)
         .subscribe(() => {
           // console.log(product)

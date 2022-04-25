@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../order.service';
 import { ClientService } from 'src/app/clients/client.service';
+import { Order } from '../order'
 
 @Component({
   selector: 'app-order-details',
@@ -17,7 +18,7 @@ export class OrderDetailsComponent {
     private route: ActivatedRoute,
   ) { }
 
-  updateOrder(order: any){
+  updateOrder(order: Order){
     this.orderService.updateOrder(order)
       .subscribe(() => {
         this.orderService.update(order, this.orderID);

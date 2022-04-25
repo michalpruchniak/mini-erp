@@ -14,7 +14,7 @@ export class NewOrderComponent {
     private orderService: OrderService,
   ) { }
 
-  addOrder(order: any){
+  addOrder(order: Order): void{
     this.orderService.addOrder(order as Order)
       .subscribe(() => {
         console.log('The order was added');

@@ -12,7 +12,7 @@ export class NewClientComponent {
     private clientService: ClientService,
   ) { }
 
-  addClient(client: any){
+  addClient(client: Client){
     this.clientService.addClient(client as Client)
       .subscribe(() => {
         console.log('The client was added');

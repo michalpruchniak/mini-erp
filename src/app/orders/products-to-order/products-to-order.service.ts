@@ -33,18 +33,18 @@ export class ProductsToOrderService {
     )
   }
 
-  getProductsToOrder(){
+  getProductsToOrder(): void{
     this.fetchProductsToOrder()
       .subscribe(product => this.productsToOrder = product)
   }
 
-  allProductsToOrder(){
+  allProductsToOrder(): ProductsToOrder[]{
     return this.productsToOrder;
   }
 
   addProductsToOrder(productsToOrder: ProductsToOrder): Observable<ProductsToOrder> {
     return this.http.post<ProductsToOrder>(this.productsToOrderURL, productsToOrder).pipe(
-      tap((newProductsToOrder: ProductsToOrder) => {this.add(newProductsToOrder); console.log(this.productsToOrder)}),
+      tap((newProductsToOrder: ProductsToOrder) => this.add(newProductsToOrder)),
       catchError(this.handleError<ProductsToOrder>('addedProductsToOrder'))
     );
   }
@@ -53,7 +53,7 @@ export class ProductsToOrderService {
     this.productsToOrder.push(productsToOrder);
   }
 
-  getProductsFromOrder(id: any) {
+  getProductsFromOrder(id: string) {
     return this.productsToOrder.filter((element) => {
       return element.order_id == parseInt(id);
     });

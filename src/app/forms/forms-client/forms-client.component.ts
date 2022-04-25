@@ -22,7 +22,7 @@ export class FormsClientComponent implements OnInit {
 
   clientForm = this.fb.group(clientForms);
 
-  onSubmit(){
+  onSubmit(): void{
     this.formData.emit(this.clientForm.value);
     this.goBack();
   }

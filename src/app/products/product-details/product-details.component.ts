@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../Product';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductDetailsComponent {
     private route: ActivatedRoute
   ) { }
 
-  updateProduct(product: any){
+  updateProduct(product: Product): void{
     this.productService.updateProduct(product)
       .subscribe(() => {
         this.productService.update(product, this.productID);

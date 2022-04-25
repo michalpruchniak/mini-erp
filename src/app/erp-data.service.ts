@@ -86,7 +86,7 @@ export class ErpDataService implements InMemoryDbService{
       {
         id: 3,
         order_id: 2,
-        products_id: 3
+        product_id: 3
       }
     ]
     return { clients,

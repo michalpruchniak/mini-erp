@@ -6,8 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-new-product-to-order.component.css']
 })
 export class AddNewProductToOrderComponent {
-
-  constructor(
-  ) { }
-
 }

@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClientService } from 'src/app/clients/client.service';
-import { Location } from '@angular/common'
-import { FormBuilder, Validators } from '@angular/forms';
-
+import { ClientService } from '../client.service';
+import { Client } from '../client'
 
 @Component({
   selector: 'app-client-details',
@@ -18,7 +16,7 @@ export class ClientDetailsComponent {
     private route: ActivatedRoute,
   ) { }
 
-  updateClient(client: any){
+  updateClient(client: Client){
     this.clientService.updateClient(client)
       .subscribe(() => {
         this.clientService.update(client, this.clientID);

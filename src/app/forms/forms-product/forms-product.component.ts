@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Product } from 'src/app/products/product';
+import { Product } from 'src/app/products/Product';
 import { ProductService } from 'src/app/products/product.service';
 import productsForms from 'src/app/products/productsForms';
 

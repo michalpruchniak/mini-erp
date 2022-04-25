@@ -22,8 +22,8 @@ export class FormsAddProductToOrderComponent {
     private fb: FormBuilder
   ) { }
 
-  onProductChange(p: any){
-    this.productService.getProduct(p.target.value)
+  onProductChange(p: any): void{
+    this.productService.getProduct(parseInt(p.target.value))
       .subscribe(product => {
         this.productForm.controls['price']
           .setValue(product.price);

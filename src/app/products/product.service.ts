@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from './product';
+import { Product } from './Product';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { NewClientComponent } from '../clients/new-client/new-client.component';
@@ -74,8 +74,9 @@ export class ProductService {
     )
   }
 
-  update(newProduct: Product, id: number) {
+  update(newProduct: Product, id: number): void {
     newProduct.id = id;
+
     this.products[id-1] = newProduct;
   }
 

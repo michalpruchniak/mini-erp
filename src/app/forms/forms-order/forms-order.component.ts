@@ -31,7 +31,7 @@ export class FormsOrderComponent implements OnInit{
     this.goBack();
   }
 
-  onClientChange(c: any){
+  onClientChange(c: any): void{
     this.clientService.getClient(c.target.value)
       .subscribe(client => {
         const number = !client.flatNumber ?
