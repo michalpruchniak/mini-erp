@@ -3,7 +3,6 @@ import { FormBuilder } from '@angular/forms';
 import productsToOrderForms from 'src/app/orders/productsToOrderForms';
 import { ProductService } from 'src/app/products/product.service';
 import { EventEmitter } from '@angular/core';
-import { ProductsToOrder } from 'src/app/orders/products-to-order/ProductsToOrder';
 
 @Component({
   selector: 'app-forms-add-product-to-order',
@@ -23,7 +22,7 @@ export class FormsAddProductToOrderComponent {
   ) { }
 
   onProductChange(p: any): void{
-    this.productService.getProduct(parseInt(p.target.value))
+    this.productService.getProduct(p.target.value as number)
       .subscribe(product => {
         this.productForm.controls['price']
           .setValue(product.price);
@@ -44,6 +43,7 @@ export class FormsAddProductToOrderComponent {
 
   onSubmit(){
     this.formData.emit(this.productForm.value);
+    console.log(this.productForm.value);
     this.productForm.reset();
   }
 

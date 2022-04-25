@@ -4,6 +4,30 @@
 
 >
   <div class="row">
+    <div class="col-12">
+          <div *ngIf="productForm.controls['product_id'].invalid &&
+                                            (productForm.controls['product_id'].dirty ||
+                                              productForm.controls['product_id'].touched)">
+            <app-alert *ngIf="productForm.controls['product_id'].errors?.['required']" type="error"
+              message="The field Product is required">
+            </app-alert>
+          </div>
+          <div *ngIf="productForm.controls['amount'].invalid &&
+                                  (productForm.controls['amount'].dirty ||
+                                   productForm.controls['amount'].touched)">
+            <app-alert *ngIf="productForm.controls['amount'].errors?.['required']" type="error" message="The field Amount is required">
+            </app-alert>
+          </div>
+          <div *ngIf="productForm.controls['price'].invalid &&
+                                  (productForm.controls['price'].dirty ||
+                                   productForm.controls['price'].touched)">
+            <app-alert *ngIf="productForm.controls['price'].errors?.['required']" type="error" message="The field Price is required">
+            </app-alert>
+          </div>
+
+    </div>
+  </div>
+  <div class="row">
     <div class="col-6">
       <select
         class="form-control"
@@ -11,7 +35,7 @@
         (change)="onProductChange($event)"
 
       >
-        <option>
+        <option value>
           --Check Product--
         </option>
         <option
@@ -21,6 +45,7 @@
         {{product.name}}
         </option>
       </select>
+
     </div>
     <div class="col-2">
       <input
@@ -46,6 +71,7 @@
       <button
         type="submit"
         class="btn btn-primary"
+        [disabled]="productForm.pristine || productForm.invalid"
       >
       Add
       </button>
